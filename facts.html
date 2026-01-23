@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Facts | Composer Diversity Report</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" data-nav-link="home">Composer Diversity Report</a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html" data-nav-link="home">Home</a>
+        <a href="facts.html" data-nav-link="facts" aria-current="page">The Facts</a>
+        <a href="about.html" data-nav-link="about">About</a>
+      </nav>
+      <div class="header-actions">
+        <a class="button button--primary download-button" href="../report/archive/composer_diversity_report.pdf" data-pdf-link download>
+          Full Report (PDF)
+        </a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+          <span class="theme-toggle__label">Theme</span>
+          <span class="theme-toggle__value" data-theme-value>Dark</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero hero--facts">
+      <div class="hero__text">
+        <p class="eyebrow">The Facts</p>
+        <h1>Representation, budgets, and recognition.</h1>
+        <p class="lede">
+          These visuals cover who scores the top 300 U.S. box-office films each year, how representation shifts with
+          budget scale, and how recognition maps against awards history.
+        </p>
+      </div>
+      <div class="hero__stats hero__stats--pies">
+        <div class="stat-card stat-pie">
+          <p class="stat-label">Women composers</p>
+          <p class="stat-meta stat-meta--inline" id="stat-women-year"></p>
+          <div class="stat-pie__chart">
+            <svg class="stat-pie__svg" viewBox="0 0 120 120" role="img" aria-label="Women composers share">
+              <title>Women composers share</title>
+              <desc>Pie chart showing the latest share of women composers.</desc>
+              <circle class="stat-pie__fill stat-pie__fill--rest" data-pie-rest="women" cx="60" cy="60" r="46">
+                <title data-pie-title="women-rest"></title>
+              </circle>
+              <path class="stat-pie__fill stat-pie__fill--women" data-pie-slice="women" d="">
+                <title data-pie-title="women"></title>
+              </path>
+            </svg>
+          </div>
+          <p class="stat-value" id="stat-women-latest">--%</p>
+        </div>
+        <div class="stat-card stat-pie">
+          <p class="stat-label">Composers of color</p>
+          <p class="stat-meta stat-meta--inline" id="stat-poc-year"></p>
+          <div class="stat-pie__chart">
+            <svg class="stat-pie__svg" viewBox="0 0 120 120" role="img" aria-label="Composers of color share">
+              <title>Composers of color share</title>
+              <desc>Pie chart showing the latest share of composers of color.</desc>
+              <circle class="stat-pie__fill stat-pie__fill--rest" data-pie-rest="poc" cx="60" cy="60" r="46">
+                <title data-pie-title="poc-rest"></title>
+              </circle>
+              <path class="stat-pie__fill stat-pie__fill--poc" data-pie-slice="poc" d="">
+                <title data-pie-title="poc"></title>
+              </path>
+            </svg>
+          </div>
+          <p class="stat-value" id="stat-poc-latest">--%</p>
+        </div>
+        <div class="chart-controls hero__stats-controls">
+          <span class="control-label">Year:</span>
+          <select id="pie-year-select" aria-label="Select year for top charts"></select>
+        </div>
+      </div>
+    </section>
+
+    <div class="facts-layout">
+      <aside class="facts-toc" aria-label="Section navigation">
+        <h2>On this page</h2>
+        <nav>
+          <a href="#overall">Overall</a>
+          <a href="#budget">Budget</a>
+          <a href="#roles">Roles</a>
+          <a href="#awards">Awards</a>
+        </nav>
+        <label class="toc-select" for="toc-select">Jump to section</label>
+        <select id="toc-select" class="toc-select" data-toc-select>
+          <option value="#overall">Overall</option>
+          <option value="#budget">Budget</option>
+          <option value="#roles">Roles</option>
+          <option value="#awards">Awards</option>
+        </select>
+      </aside>
+
+      <div class="facts-content">
+        <div id="data-error" class="data-error" hidden>
+          <p>Data temporarily unavailable. Please try again or download the PDF report.</p>
+        </div>
+
+        <section id="overall" class="panel">
+          <div class="panel__header">
+            <h2>Women and Composers of Color Remained Nearly Absent from Film Composition for Two Decades, With Only Modest Post-2018 Gains</h2>
+            <p>Share of feature films scored by women composers and composers of color across the top 300 U.S. box-office films.</p>
+          </div>
+          <p class="sr-only" id="overall-summary">Line chart showing yearly share of films scored by women composers and People of Color (PoC).</p>
+          <div class="chart"><canvas id="chart-overall" aria-describedby="overall-summary"></canvas></div>
+          <details class="chart-data">
+            <summary>View data table</summary>
+            <table class="data-table" aria-describedby="overall-summary">
+              <caption class="sr-only" id="overall-table-caption">Overall representation data by year.</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Year</th>
+                  <th scope="col">Women composers</th>
+                  <th scope="col">People of Color (PoC)</th>
+                </tr>
+              </thead>
+              <tbody id="table-overall"></tbody>
+            </table>
+          </details>
+          <div class="share-bar" data-share-chart="overall" data-share-anchor="overall" data-share-filename="overall-representation.png">
+            <button class="button button--ghost button--small" type="button" data-share-action="download">Download chart (PNG)</button>
+          </div>
+        </section>
+
+        <section id="budget" class="panel">
+          <div class="panel__header">
+            <h2>High-Budget Films Are Less Likely to Be Scored by Women</h2>
+            <p>Women or composers of color share by production budget bracket.</p>
+          </div>
+          <div class="chart-controls">
+            <span class="control-label">Composer group:</span>
+            <select id="budget-metric">
+              <option value="women">Women composers</option>
+              <option value="poc">Composers of color</option>
+            </select>
+          </div>
+          <div class="chart-controls" data-target="budget">
+            <span class="control-label">Budget bracket:</span>
+            <label><input type="checkbox" data-series="all_films" checked /> All films</label>
+            <label><input type="checkbox" data-series="under_10m" /> Under $10M</label>
+            <label><input type="checkbox" data-series="between_10m_50m" /> $10M - $50M</label>
+            <label><input type="checkbox" data-series="over_50m" checked /> Over $50M</label>
+          </div>
+          <p class="sr-only" id="budget-summary">Line chart showing yearly share of films by production budget bracket.</p>
+          <div class="chart"><canvas id="chart-budget" aria-describedby="budget-summary"></canvas></div>
+          <details class="chart-data">
+            <summary>View data table</summary>
+            <table class="data-table" aria-describedby="budget-summary">
+              <caption class="sr-only" id="budget-table-caption">Budget bracket share data by year.</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Year</th>
+                  <th scope="col">All films</th>
+                  <th scope="col">Under $10M</th>
+                  <th scope="col">$10M - $50M</th>
+                  <th scope="col">Over $50M</th>
+                </tr>
+              </thead>
+              <tbody id="table-budget"></tbody>
+            </table>
+          </details>
+          <div class="share-bar" data-share-chart="budget" data-share-anchor="budget" data-share-filename="budget-by-metric.png">
+            <button class="button button--ghost button--small" type="button" data-share-action="download">Download chart (PNG)</button>
+          </div>
+        </section>
+
+
+        <section id="roles" class="panel">
+          <div class="panel__header">
+            <h2>Music Department Roles Show Persistent Gender and Racial Gaps</h2>
+            <p>Women and People of Color (PoC) share by role.</p>
+          </div>
+          <div class="chart-controls">
+            <span class="control-label">Role:</span>
+            <select id="role-select">
+              <option value="orchestrator">Orchestrator</option>
+              <option value="orchestrator_team">Orchestrator team</option>
+              <option value="conductor">Conductor</option>
+              <option value="music_editor">Music editor</option>
+              <option value="music_prep">Music prep</option>
+            </select>
+          </div>
+          <p class="sr-only" id="roles-summary">Line chart showing yearly share of women composers and People of Color (PoC) by music department role.</p>
+          <div class="chart"><canvas id="chart-roles" aria-describedby="roles-summary"></canvas></div>
+          <details class="chart-data">
+            <summary>View data table</summary>
+            <table class="data-table" aria-describedby="roles-summary">
+              <caption class="sr-only" id="roles-table-caption">Role share data by year.</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Year</th>
+                  <th scope="col">Women composers</th>
+                  <th scope="col">People of Color (PoC)</th>
+                </tr>
+              </thead>
+              <tbody id="table-roles"></tbody>
+            </table>
+          </details>
+          <div class="share-bar" data-share-chart="roles" data-share-anchor="roles" data-share-filename="roles-share.png">
+            <button class="button button--ghost button--small" type="button" data-share-action="download">Download chart (PNG)</button>
+          </div>
+        </section>
+
+        <section id="awards" class="panel">
+          <div class="panel__header">
+            <h2>Major Film Music Awards Have Largely Excluded Women and PoC for Nearly a Century</h2>
+            <p>Share of women composers and composers of color nominated at major awards.</p>
+          </div>
+          <div class="chart-controls">
+            <span class="control-label">Award:</span>
+            <select id="awards-select">
+              <option value="all">All awards</option>
+              <option value="oscars">Oscars</option>
+              <option value="globes">Golden Globes</option>
+              <option value="grammys">Grammys</option>
+            </select>
+          </div>
+          <p class="sr-only" id="awards-summary">Line chart showing yearly award share for women composers and composers of color.</p>
+          <div class="chart"><canvas id="chart-awards" aria-describedby="awards-summary"></canvas></div>
+          <details class="chart-data">
+            <summary>View data table</summary>
+            <table class="data-table" aria-describedby="awards-summary">
+              <caption class="sr-only" id="awards-table-caption">Awards share data by year.</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Year</th>
+                  <th scope="col">Women composers</th>
+                  <th scope="col">Composers of color</th>
+                </tr>
+              </thead>
+              <tbody id="table-awards"></tbody>
+            </table>
+          </details>
+          <div class="share-bar" data-share-chart="awards" data-share-anchor="awards" data-share-filename="awards-share.png">
+            <button class="button button--ghost button--small" type="button" data-share-action="download">Download chart (PNG)</button>
+          </div>
+        </section>
+
+        <section class="panel panel--patterns">
+          <div class="panel__header">
+            <h2>What These Patterns Show</h2>
+            <p class="subtitle">These observations summarize the patterns visible across the data presented in the report.</p>
+          </div>
+          <div class="pattern-grid">
+            <div class="pattern-card">
+              <p class="pattern-title">Persistent gaps</p>
+              <p>Representation of women and composers of color <strong>remains low</strong> across the period analyzed.</p>
+            </div>
+            <div class="pattern-card">
+              <p class="pattern-title">Limited recent movement</p>
+              <p>Recent increases in representation are visible <strong>but modest in scale</strong>.</p>
+            </div>
+            <div class="pattern-card">
+              <p class="pattern-title">Concentration at the top</p>
+              <p>Representation is <strong>lowest among the highest-grossing and highest-budget</strong> films.</p>
+            </div>
+            <div class="pattern-card">
+              <p class="pattern-title">Recognition lag</p>
+              <p>Women and composers of color accumulate more professional experience before receiving major awards recognition.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Sandrine Rudaz.</p>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

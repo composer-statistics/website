@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Composer Diversity Report</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" data-nav-link="home">Composer Diversity Report</a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html" data-nav-link="home" aria-current="page">Home</a>
+        <a href="facts.html" data-nav-link="facts">The Facts</a>
+        <a href="about.html" data-nav-link="about">About</a>
+      </nav>
+      <div class="header-actions">
+        <a class="button button--primary download-button" href="../report/archive/composer_diversity_report.pdf" data-pdf-link download>
+          Full Report (PDF)
+        </a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+          <span class="theme-toggle__label">Theme</span>
+          <span class="theme-toggle__value" data-theme-value>Dark</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero hero--home">
+      <div class="hero__text">
+        <h1>Composer Diversity Report</h1>
+        <p class="subtitle">A data-driven analysis of representation in the U.S. film music industry (2000-2025).</p>
+        <div class="cta-row cta-row--nowrap">
+          <!-- <a class="button" href="../report/archive/composer_diversity_report.pdf" data-pdf-link download>Full Report (PDF)</a>
+          <a class="button button--ghost" href="facts.html">The Facts</a>
+          <a class="button button--ghost" href="about.html">About</a> -->
+        </div>
+        <a class="hero__scroll-hint" href="#facts-carousel" data-scroll-target="facts-carousel" aria-label="Jump to key facts">
+          <span>Key facts</span>
+          <span class="hero__arrow" aria-hidden="true">⌄</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section section--facts">
+      <div class="container container--full">
+        <div class="carousel carousel--facts" id="facts-carousel" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="Five facts">
+          <div class="carousel__viewport" aria-live="polite">
+            <article class="carousel__slide is-active" id="fact-1" data-carousel-slide aria-roledescription="slide" aria-label="1 of 5" role="tabpanel" aria-labelledby="tab-fact-1" aria-hidden="false" tabindex="-1">
+              <div class="carousel__fact-block">
+                <div class="fact-headline">
+                  <p class="carousel__fact-text">For nearly two decades, only <span style="color: var(--poc-accent);">4%</span> of top-grossing films were scored by women.</p>
+                </div>
+                <div class="fact-viz fact-viz--dots" data-fact-viz="dots">
+                  <div class="fact-callout fact-callout--overlay">4%</div>
+                </div>
+                <div class="fact-legend fact-legend--compact">
+                  <span>
+                    <svg class="legend-icon legend-icon--stroke" viewBox="0 0 16 16" aria-hidden="true">
+                      <rect x="1.5" y="6.2" width="13" height="7.8" rx="1.4" />
+                      <rect x="1.5" y="5.6" width="2.2" height="1.2" fill="#1F2328" />
+                      <polygon points="2.2,4.2 13.6,1.8 14.6,3.8 3.2,6.2" />
+                      <rect x="4.1" y="3.6" width="2" height="1.1" fill="#1F2328" />
+                      <rect x="7.1" y="3.0" width="2" height="1.1" fill="#1F2328" />
+                      <rect x="10.1" y="2.4" width="2" height="1.1" fill="#1F2328" />
+                    </svg>
+                    = 1 film
+                  </span>
+                  <span><span class="legend-accent">Purple</span> = women composers</span>
+                </div>
+                <div class="carousel__caption carousel__caption--stack">
+                  <p>Top 300 U.S. box-office films per year (2000-2017).</p>
+                </div>
+              </div>
+            </article>
+            <article class="carousel__slide" id="fact-2" data-carousel-slide aria-roledescription="slide" aria-label="2 of 5" role="tabpanel" aria-labelledby="tab-fact-2" aria-hidden="true" tabindex="-1">
+              <div class="carousel__fact-block">
+                <p class="carousel__fact-text">For three-quarters of history, no woman composer nominated at the Oscars, Grammys, or Golden Globes.</p>
+                <div class="fact-viz fact-viz--timeline" data-fact-viz="timeline"></div>
+                <div class="fact-legend">
+                  <span><span class="legend-dot legend-dot--full" aria-hidden="true"></span> ≥1 woman nominee</span>
+                  <span><span class="legend-dot legend-dot--empty" aria-hidden="true"></span> 0 women nominees</span>
+                </div>
+                <p class="carousel__caption">All award years for Original Score or equivalent categories.</p>
+              </div>
+            </article>
+            <article class="carousel__slide" id="fact-3" data-carousel-slide aria-roledescription="slide" aria-label="3 of 5" role="tabpanel" aria-labelledby="tab-fact-3" aria-hidden="true" tabindex="-1">
+              <div class="carousel__fact-block">
+                <p class="carousel__fact-text"><span style="color: var(--poc-accent);">High-budget</span> films are less likely to be scored by <span class="legend-accent">women</span>.</p>
+                <div class="fact-viz fact-viz--bars" data-fact-viz="bars"></div>
+                <p class="carousel__caption">Top 300 U.S. box-office films per year between 2000 and 2025. </p>
+              </div>
+            </article>
+            <article class="carousel__slide" id="fact-4" data-carousel-slide aria-roledescription="slide" aria-label="4 of 5" role="tabpanel" aria-labelledby="tab-fact-4" aria-hidden="true" tabindex="-1">
+              <div class="carousel__fact-block carousel__fact-block--text-heavy">
+                <p class="carousel__fact-text"><span class="legend-accent">Women composers</span> and <span style="color: var(--poc-accent);">composers of color</span> must wait significantly longer to receive their first Oscar nomination.</p>
+                <div class="fact-viz fact-viz--experience" data-fact-viz="experience"></div>
+                <p class="carousel__caption">Average Time to First Oscar Nomination from First Credit</p>
+              </div>
+            </article>
+            <article class="carousel__slide" id="fact-5" data-carousel-slide aria-roledescription="slide" aria-label="5 of 5" role="tabpanel" aria-labelledby="tab-fact-5" aria-hidden="true" tabindex="-1">
+              <div class="carousel__fact-block carousel__fact-block--text-heavy carousel__fact-block--mega">
+                <p class="carousel__fact-text">
+                  ONE COMPOSERS HAS MORE OSCAR NOMINATIONS THAN ALL <span class="legend-accent">WOMEN COMPOSERS</span> AND ALL <span style="color: var(--poc-accent);">COMPOSERS OF COLOR</span> COMBINED.
+                </p>
+              </div>
+            </article>
+          </div>
+          <div class="carousel__controls">
+            <div class="carousel__control-group carousel__control-group--left">
+              <button class="carousel__button carousel__button--icon" type="button" data-carousel-prev aria-label="Previous fact">
+                <span class="carousel__icon" aria-hidden="true">‹</span>
+              </button>
+            </div>
+            <div class="carousel__dots" role="tablist" aria-label="Fact navigation">
+              <button class="carousel__dot is-active" id="tab-fact-1" type="button" role="tab" data-carousel-dot aria-label="Fact 1" aria-selected="true" aria-controls="fact-1" tabindex="0"></button>
+              <button class="carousel__dot" id="tab-fact-2" type="button" role="tab" data-carousel-dot aria-label="Fact 2" aria-selected="false" aria-controls="fact-2" tabindex="-1"></button>
+              <button class="carousel__dot" id="tab-fact-3" type="button" role="tab" data-carousel-dot aria-label="Fact 3" aria-selected="false" aria-controls="fact-3" tabindex="-1"></button>
+              <button class="carousel__dot" id="tab-fact-4" type="button" role="tab" data-carousel-dot aria-label="Fact 4" aria-selected="false" aria-controls="fact-4" tabindex="-1"></button>
+              <button class="carousel__dot" id="tab-fact-5" type="button" role="tab" data-carousel-dot aria-label="Fact 5" aria-selected="false" aria-controls="fact-5" tabindex="-1"></button>
+            </div>
+            <div class="carousel__control-group carousel__control-group--right">
+              <button class="carousel__button carousel__button--icon" type="button" data-carousel-next aria-label="Next fact">
+                <span class="carousel__icon" aria-hidden="true">›</span>
+              </button>
+              <button class="carousel__button carousel__button--icon" type="button" data-carousel-toggle aria-pressed="true">
+                <span class="carousel__icon" aria-hidden="true">❚❚</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="home-roles" class="panel panel--interactive">
+      <div class="panel__header">
+        <h2>Representation across composers and music department roles</h2>
+        <p>Switch roles to compare how representation shifts across key credits.</p>
+      </div>
+      <div class="chart-controls">
+        <span class="control-label">Role:</span>
+        <select id="home-role-select">
+          <option value="composer">Composer</option>
+          <option value="orchestrator">Orchestrator</option>
+          <option value="orchestrator_team">Orchestrator team</option>
+          <option value="conductor">Conductor</option>
+          <option value="music_editor">Music editor</option>
+          <option value="music_prep">Music prep</option>
+        </select>
+      </div>
+      <p class="sr-only" id="home-roles-summary">Line chart showing yearly share of women composers and People of Color (PoC) across selected music department roles.</p>
+      <div class="chart"><canvas id="chart-home-roles" aria-describedby="home-roles-summary"></canvas></div>
+      <details class="chart-data">
+        <summary>View data table</summary>
+        <table class="data-table" aria-describedby="home-roles-summary">
+          <caption class="sr-only" id="home-roles-table-caption">Representation by role and year.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Year</th>
+              <th scope="col">Women composers</th>
+              <th scope="col">People of Color (PoC)</th>
+            </tr>
+          </thead>
+          <tbody id="table-home-roles"></tbody>
+        </table>
+      </details>
+      <div class="share-bar" data-share-chart="home-roles" data-share-anchor="home-roles" data-share-filename="roles-home.png">
+        <button class="button button--ghost button--small" type="button" data-share-action="download">Download chart (PNG)</button>
+      </div>
+    </section>
+
+    <section class="section section--brief">
+      <div class="container">
+        <div class="section-header">
+          <h2>What this report covers, and why.</h2>
+        </div>
+        <div class="brief-grid">
+          <div class="panel__callout">
+            <h3>Purpose of the Report</h3>
+            <p>
+              This report documents long-term patterns in the representation of women and People of Color (PoC) in the U.S.
+              film music industry. Using the top 300 U.S. domestic box-office films per year from 2000-2025, it examines
+              composers, key music department roles, and awards recognition. The objective is descriptive, not prescriptive.
+            </p>
+          </div>
+          <div class="panel__callout">
+            <h3>Data at a glance</h3>
+            <ul>
+              <li>🎬 7,800 films (Top 300 per year, 2000-2025)</li>
+              <li>👤 6,000+ professionals</li>
+              <li>🎼 Roles: composers, orchestrators, conductors, music editors, music preparators, orchestration teams</li>
+              <li>🏆 Awards: Academy Awards, Golden Globes, Grammys</li>
+              <li>📊 Sources: IMDb, publicly available information</li>
+            </ul>
+          </div>
+          <div class="panel__callout">
+            <h3>What this report does — and does not do</h3>
+            <div class="list-grid">
+              <div>
+                <p class="list-label">Does</p>
+                <ul>
+                  <li>Descriptive, data-driven analysis</li>
+                  <li>Provides a factual foundation for informed discussion</li>
+                </ul>
+              </div>
+              <div>
+                <p class="list-label">Does not</p>
+                <ul>
+                  <li>Assign individual responsibility</li>
+                  <li>Make causal claims</li>
+                  <li>Propose policy solutions</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-panel">
+      <div class="container cta-panel__inner">
+        <div class="cta-panel__content">
+          <div>
+            <p class="eyebrow">The Facts</p>
+            <h2>Each of these findings is supported by decades of data.</h2>
+            <p class="subtitle">Explore the evidence and the patterns visible in the data.</p>
+          </div>
+          <div class="two-col facts-prompts">
+            <div class="panel__callout">
+              <p>Who gets hired — and who doesn't?</p>
+            </div>
+            <div class="panel__callout">
+              <p>How budgets affect access</p>
+            </div>
+            <div class="panel__callout">
+              <p>Who receives recognition</p>
+            </div>
+          </div>
+          <div class="cta-row cta-panel__action">
+            <a class="button" href="facts.html" data-nav-link="facts">Explore the Data</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Sandrine Rudaz.</p>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
