@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Carousel Facts (Portrait) | Composer Diversity Report</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .portrait-page [data-fact-viz],
+    .portrait-page [data-fact-viz] svg,
+    .portrait-page [data-fact-viz] canvas {
+      background: #1F2328;
+    }
+  </style>
+</head>
+<body class="portrait-page">
+  <main id="main" class="portrait-page__main">
+    <div class="portrait-frame portrait-frame--stack">
+      <div class="facts-stack" aria-label="Five facts">
+          <article class="facts-stack__item" id="fact-1">
+            <div class="carousel__fact-block">
+              <div class="fact-headline">
+                <p class="carousel__fact-text">Over 26 years, only <span style="color: var(--poc-accent);">6%</span> of top-grossing films were scored by women.</p>
+              </div>
+              <div class="fact-viz fact-viz--dots" data-fact-viz="dots">
+                <div class="fact-callout fact-callout--overlay">6%</div>
+              </div>
+              <div class="fact-legend fact-legend--compact">
+                <span>
+                  <svg class="legend-icon legend-icon--stroke" viewBox="0 0 16 16" aria-hidden="true">
+                    <rect x="1.5" y="6.2" width="13" height="7.8" rx="1.4" />
+                    <rect x="1.5" y="5.6" width="2.2" height="1.2" fill="#1F2328" />
+                    <polygon points="2.2,4.2 13.6,1.8 14.6,3.8 3.2,6.2" />
+                    <rect x="4.1" y="3.6" width="2" height="1.1" fill="#1F2328" />
+                    <rect x="7.1" y="3.0" width="2" height="1.1" fill="#1F2328" />
+                    <rect x="10.1" y="2.4" width="2" height="1.1" fill="#1F2328" />
+                  </svg>
+                  = 1 film
+                </span>
+                <span><span class="legend-accent">Purple</span> = women composers</span>
+              </div>
+              <div class="carousel__caption carousel__caption--stack">
+                <p>Top 300 U.S. box-office films per year (2000-2025).</p>
+              </div>
+            </div>
+          </article>
+          <article class="facts-stack__item" id="fact-2">
+            <div class="carousel__fact-block">
+              <div class="fact-viz fact-viz--timeline" data-fact-viz="timeline"></div>
+              <div class="fact-legend">
+                <span><span class="legend-dot legend-dot--full" aria-hidden="true"></span> ≥1 woman nominee</span>
+                <span><span class="legend-dot legend-dot--empty" aria-hidden="true"></span> 0 women nominees</span>
+              </div>
+              <p class="carousel__caption">All award years for Original Score or equivalent categories.</p>
+            </div>
+          </article>
+          <article class="facts-stack__item" id="fact-3">
+            <div class="carousel__fact-block">
+              <div class="fact-viz fact-viz--awards-scatter" data-fact-viz="awards-scatter"></div>
+              <p class="carousel__caption">Awards redistributed into a randomized field (same counts per award).</p>
+            </div>
+          </article>
+          <article class="facts-stack__item" id="fact-5">
+            <div class="carousel__fact-block">
+              <div class="fact-viz fact-viz--oscars-grid" data-fact-viz="oscars-grid"></div>
+              <p class="carousel__caption">Oscar nominations grid (982 total, 14 highlighted).</p>
+            </div>
+          </article>
+          <article class="facts-stack__item" id="fact-4">
+            <div class="carousel__fact-block carousel__fact-block--text-heavy">
+              <div class="fact-viz fact-viz--experience" data-fact-viz="experience"></div>
+              <p class="carousel__caption">Average Time to First Oscar Nomination from First Credit</p>
+            </div>
+          </article>
+      </div>
+    </div>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+
+  <script src="main.js"></script>
+</body>
+</html>

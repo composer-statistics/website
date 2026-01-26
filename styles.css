@@ -164,6 +164,22 @@ select:focus-visible {
   flex-wrap: wrap;
 }
 
+.nav-toggle {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  padding: 8px 12px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
 .site-nav a {
   padding: 8px 12px;
   border-radius: 999px;
@@ -333,6 +349,10 @@ select:focus-visible {
   font-size: 20px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  color: var(--text);
+}
+
+:root[data-theme="light"] .hero__scroll-hint {
   color: rgba(0, 0, 0, 0.75);
 }
 
@@ -560,6 +580,75 @@ select:focus-visible {
   border-radius: 0;
 }
 
+.portrait-page {
+  background: #0f1217;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+.portrait-page__main {
+  width: 100%;
+}
+
+.portrait-frame {
+  width: min(980px, 100%);
+  aspect-ratio: 4 / 5;
+  margin: 0 auto;
+  background: #1F2328;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.4);
+}
+
+.portrait-frame--stack {
+  aspect-ratio: auto;
+  padding: clamp(28px, 4vw, 48px);
+}
+
+.facts-stack {
+  display: grid;
+  gap: clamp(28px, 4vw, 44px);
+}
+
+.facts-stack__item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  padding: clamp(22px, 3vw, 36px);
+}
+
+.facts-stack .carousel__fact-block {
+  gap: 12px;
+}
+
+.facts-stack .carousel__fact-text {
+  font-size: clamp(26px, 4.2vw, 44px);
+}
+
+.facts-stack .carousel__fact-block--text-heavy .carousel__fact-text {
+  font-size: clamp(30px, 4.6vw, 48px);
+}
+
+.facts-stack .carousel__caption {
+  font-size: clamp(16px, 2.3vw, 22px);
+}
+
+.facts-stack .fact-legend {
+  justify-content: center;
+}
+
+.facts-stack .fact-legend--compact {
+  justify-content: center;
+}
+
+.facts-stack .carousel__fact-block--mega .carousel__fact-text {
+  font-size: clamp(40px, 6vw, 72px);
+}
+
 .carousel__viewport {
   position: relative;
   min-height: 340px;
@@ -726,6 +815,19 @@ select:focus-visible {
   color: rgba(255, 255, 255, 0.08);
 }
 
+.fact-viz--awards-scatter .icon-empty {
+  color: rgba(255, 255, 255, 0.08);
+}
+
+.fact-viz--oscars-grid .icon-empty {
+  color: rgba(255, 255, 255, 0.08);
+}
+
+.fact-viz--oscars-grid .icon-full {
+  color: var(--accent);
+  filter: drop-shadow(0 0 8px rgba(160, 92, 255, 0.55));
+}
+
 .legend-icon.icon-full,
 .legend-icon.icon-empty,
 .legend-icon.icon-na {
@@ -809,7 +911,7 @@ select:focus-visible {
 }
 
 .carousel__fact-block--mega .carousel__fact-text {
-  font-size: clamp(54px, 7.8vw, 96px);
+  font-size: clamp(44px, 6.4vw, 80px);
   line-height: 1.2;
 }
 
@@ -1512,9 +1614,51 @@ canvas {
 }
 
 @media (max-width: 700px) {
+  .site-header__inner {
+    gap: 12px;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .site-nav {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 8px;
+  }
+
+  .site-header--open .site-nav {
+    display: flex;
+  }
+
+  .site-nav a {
+    width: 100%;
+  }
+
   .header-actions {
     width: 100%;
     justify-content: flex-start;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .site-header--open .header-actions {
+    display: flex;
+  }
+
+  .header-actions .button,
+  .header-actions .theme-toggle,
+  .header-actions .download-button {
+    width: 100%;
+    justify-content: center;
   }
 
   .carousel__controls {
@@ -1525,6 +1669,34 @@ canvas {
 
   .cta-row--nowrap {
     flex-wrap: wrap;
+  }
+
+  .hero {
+    margin: 24px auto 20px;
+    padding: 22px;
+  }
+
+  .panel {
+    padding: 16px 16px 20px;
+  }
+
+  .carousel--facts {
+    padding: 28px 20px;
+  }
+
+  .carousel__viewport {
+    min-height: 260px;
+  }
+
+  .data-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .data-table th,
+  .data-table td {
+    white-space: nowrap;
   }
 }
 
