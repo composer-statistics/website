@@ -1,11 +1,11 @@
 :root {
   color-scheme: dark;
-  --bg: #05070d;
+  --bg: #1F2328;
   --bg-glow-1: rgba(160, 92, 255, 0.22);
   --bg-glow-2: rgba(124, 78, 214, 0.16);
-  --panel: #0a0f1c;
-  --card: #101628;
-  --header-bg: rgba(5, 7, 13, 0.9);
+  --panel: var(--bg);
+  --card: var(--bg);
+  --header-bg: rgba(31, 35, 40, 0.9);
   --border: rgba(255, 255, 255, 0.08);
   --accent: #5a4e8c;
   --accent-2: #5a4e8c;
@@ -21,7 +21,7 @@
   --chart-muted: #c6ccd8;
   --chart-grid: rgba(255, 255, 255, 0.12);
   --chart-grid-soft: rgba(255, 255, 255, 0.04);
-  --tooltip-bg: rgba(10, 15, 28, 0.92);
+  --tooltip-bg: rgba(31, 35, 40, 0.92);
 }
 
 :root[data-theme="light"] {
@@ -189,7 +189,7 @@ select:focus-visible {
 }
 
 .site-nav a[aria-current="page"] {
-  background: rgba(124, 247, 255, 0.18);
+  background: var(--bg);
   color: var(--text);
 }
 
@@ -269,6 +269,22 @@ select:focus-visible {
   border-radius: 10px;
 }
 
+.download-icon {
+  display: inline-flex;
+  width: 14px;
+  height: 14px;
+}
+
+.download-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.download-format {
+  margin-left: 6px;
+}
+
 .download-button {
   padding: 12px 20px;
   font-size: 14px;
@@ -278,7 +294,7 @@ select:focus-visible {
   width: min(1200px, 92vw);
   margin: 36px auto 32px;
   padding: 32px;
-  background: linear-gradient(135deg, rgba(10, 15, 28, 0.95), rgba(5, 8, 16, 0.95));
+  background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   display: grid;
@@ -440,6 +456,10 @@ select:focus-visible {
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
+:root:not([data-theme="light"]) .hero--facts .stat-card {
+  background: rgba(255, 255, 255, 0.05);
+}
+
 .stat-label {
   margin: 0;
   text-transform: uppercase;
@@ -581,7 +601,7 @@ select:focus-visible {
 }
 
 .portrait-page {
-  background: #0f1217;
+  background: var(--bg);
   min-height: 100vh;
   margin: 0;
   display: flex;
@@ -598,7 +618,7 @@ select:focus-visible {
   width: min(980px, 100%);
   aspect-ratio: 4 / 5;
   margin: 0 auto;
-  background: #1F2328;
+  background: var(--bg);
   border-radius: 28px;
   overflow: hidden;
   box-shadow: 0 28px 60px rgba(0, 0, 0, 0.4);
@@ -784,17 +804,16 @@ select:focus-visible {
   max-width: none;
 }
 
-/* Visual regression checklist: mobile, desktop, dark background, projector readability. */
 .fact-viz .dot-muted {
-  fill: rgba(255, 255, 255, 0.5);
-  color: rgba(255, 255, 255, 0.5);
+  fill: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.18);
   transform-box: fill-box;
   transform-origin: center;
 }
 
 .fact-viz .dot-accent {
-  fill: var(--fact-dot-accent);
-  color: var(--fact-dot-accent);
+  fill: #7a6ad6;
+  color: #7a6ad6;
   transform-box: fill-box;
   transform-origin: center;
 }
@@ -1255,8 +1274,7 @@ select:focus-visible {
 }
 
 .pattern-card {
-  background: linear-gradient(135deg, rgba(106, 0, 255, 0.22) 0%, rgba(106, 0, 255, 0.08) 45%, rgba(245, 179, 0, 0.22) 100%),
-              var(--card);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02));
   border-radius: 14px;
   padding: 16px 18px;
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -1271,7 +1289,7 @@ select:focus-visible {
 }
 
 :root[data-theme="light"] .pattern-card {
-  background: linear-gradient(135deg, rgba(106, 0, 255, 0.12) 0%, rgba(255, 255, 255, 0.7) 45%, rgba(245, 179, 0, 0.14) 100%);
+  background: var(--card);
 }
 
 .pattern-title {
@@ -1348,6 +1366,12 @@ select:focus-visible {
 
 .brief-grid > .panel__callout:first-child {
   grid-column: 1 / -1;
+}
+
+@media (max-width: 720px) {
+  .brief-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .data-glance {
@@ -1501,6 +1525,19 @@ select:focus-visible {
   height: 320px;
 }
 
+:root:not([data-theme="light"]) #home-roles .chart {
+  background: var(--bg);
+  border-radius: var(--radius);
+}
+
+:root:not([data-theme="light"]) #home-roles.panel {
+  background: var(--bg);
+}
+
+:root:not([data-theme="light"]) #home-roles .chart-controls select {
+  background: var(--bg);
+}
+
 .chart-controls {
   display: flex;
   align-items: center;
@@ -1544,8 +1581,29 @@ select:focus-visible {
 
 .chart-actions {
   display: flex;
-  justify-content: flex-end;
-  margin-top: 8px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.chart-actions .chart-data {
+  margin-top: 0;
+  flex: 1 1 auto;
+}
+
+.chart-actions .chart-data[open] {
+  flex-basis: 100%;
+}
+
+.chart-actions .chart-data[open] summary {
+  margin-bottom: 8px;
+}
+
+.chart-actions .share-bar {
+  margin-top: 0;
+  flex: 0 0 auto;
 }
 
 .share-bar {
@@ -1663,8 +1721,27 @@ canvas {
 
   .carousel__controls {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    gap: 12px;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+
+  .carousel__control-group {
+    gap: 12px;
+    flex: 0 0 auto;
+  }
+
+  .carousel__dots {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+
+  .carousel__dot {
+    width: 12px;
+    height: 12px;
   }
 
   .cta-row--nowrap {
@@ -1687,6 +1764,20 @@ canvas {
   .carousel__viewport {
     min-height: 260px;
   }
+
+  .carousel__button {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .carousel__button:active {
+    transform: scale(0.98);
+  }
+
 
   .data-table {
     display: block;

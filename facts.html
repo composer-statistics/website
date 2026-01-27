@@ -117,29 +117,39 @@
           </div>
           <p class="sr-only" id="overall-summary">Line chart showing yearly share of films scored by women composers and People of Color (PoC).</p>
           <div class="chart"><canvas id="chart-overall" aria-describedby="overall-summary"></canvas></div>
-          <details class="chart-data">
-            <summary>View data table</summary>
-            <table class="data-table" aria-describedby="overall-summary">
-              <caption class="sr-only" id="overall-table-caption">Overall representation data by year.</caption>
-              <thead>
-                <tr>
-                  <th scope="col">Year</th>
-                  <th scope="col">Women composers</th>
-                  <th scope="col">People of Color (PoC)</th>
-                </tr>
-              </thead>
-              <tbody id="table-overall"></tbody>
-            </table>
-          </details>
-          <div class="share-bar" data-share-chart="overall" data-share-anchor="overall" data-share-filename="overall-representation.png">
-            <button class="button button--ghost button--small" type="button" data-share-action="download">Download chart (PNG)</button>
+          <div class="chart-actions">
+            <details class="chart-data">
+              <summary>View data</summary>
+              <table class="data-table" aria-describedby="overall-summary">
+                <caption class="sr-only" id="overall-table-caption">Overall representation data by year.</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Year</th>
+                    <th scope="col">Women composers</th>
+                    <th scope="col">People of Color (PoC)</th>
+                  </tr>
+                </thead>
+                <tbody id="table-overall"></tbody>
+              </table>
+            </details>
+            <div class="share-bar" data-share-chart="overall" data-share-anchor="overall" data-share-filename="overall-representation.png">
+              <button class="button button--ghost button--small" type="button" data-share-action="download">
+                <span class="download-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M12 3a1 1 0 0 1 1 1v9.17l2.59-2.58a1 1 0 1 1 1.41 1.42l-4.3 4.29a1 1 0 0 1-1.4 0l-4.3-4.29a1 1 0 0 1 1.41-1.42L11 13.17V4a1 1 0 0 1 1-1zm-7 14a1 1 0 0 1 1 1v2h12v-2a1 1 0 1 1 2 0v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1z"/>
+                  </svg>
+                </span>
+                <span class="sr-only">Download chart</span>
+                <span class="download-format">(PNG)</span>
+              </button>
+            </div>
           </div>
         </section>
 
         <section id="budget" class="panel">
           <div class="panel__header">
             <h2>High-Budget Films Are Less Likely to Be Scored by Women</h2>
-            <p>Women or composers of color share by production budget bracket.</p>
+            <p>Women or composers of color share by production budget.</p>
           </div>
           <div class="chart-controls">
             <span class="control-label">Composer group:</span>
@@ -148,33 +158,36 @@
               <option value="poc">Composers of color</option>
             </select>
           </div>
-          <div class="chart-controls" data-target="budget">
-            <span class="control-label">Budget bracket:</span>
-            <label><input type="checkbox" data-series="all_films" checked /> All films</label>
-            <label><input type="checkbox" data-series="under_10m" /> Under $10M</label>
-            <label><input type="checkbox" data-series="between_10m_50m" /> $10M - $50M</label>
-            <label><input type="checkbox" data-series="over_50m" checked /> Over $50M</label>
-          </div>
-          <p class="sr-only" id="budget-summary">Line chart showing yearly share of films by production budget bracket.</p>
+          <p class="sr-only" id="budget-summary">Line chart showing yearly share of films by production budget.</p>
           <div class="chart"><canvas id="chart-budget" aria-describedby="budget-summary"></canvas></div>
-          <details class="chart-data">
-            <summary>View data table</summary>
-            <table class="data-table" aria-describedby="budget-summary">
-              <caption class="sr-only" id="budget-table-caption">Budget bracket share data by year.</caption>
-              <thead>
-                <tr>
-                  <th scope="col">Year</th>
-                  <th scope="col">All films</th>
-                  <th scope="col">Under $10M</th>
-                  <th scope="col">$10M - $50M</th>
-                  <th scope="col">Over $50M</th>
-                </tr>
-              </thead>
-              <tbody id="table-budget"></tbody>
-            </table>
-          </details>
-          <div class="share-bar" data-share-chart="budget" data-share-anchor="budget" data-share-filename="budget-by-metric.png">
-            <button class="button button--ghost button--small" type="button" data-share-action="download">Download chart (PNG)</button>
+          <div class="chart-actions">
+            <details class="chart-data">
+              <summary>View data</summary>
+              <table class="data-table" aria-describedby="budget-summary">
+                <caption class="sr-only" id="budget-table-caption">Budget bracket share data by year.</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Year</th>
+                    <th scope="col">All films</th>
+                    <th scope="col">Under $10M</th>
+                    <th scope="col">$10M - $50M</th>
+                    <th scope="col">Over $50M</th>
+                  </tr>
+                </thead>
+                <tbody id="table-budget"></tbody>
+              </table>
+            </details>
+            <div class="share-bar" data-share-chart="budget" data-share-anchor="budget" data-share-filename="budget-by-metric.png">
+              <button class="button button--ghost button--small" type="button" data-share-action="download">
+                <span class="download-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M12 3a1 1 0 0 1 1 1v9.17l2.59-2.58a1 1 0 1 1 1.41 1.42l-4.3 4.29a1 1 0 0 1-1.4 0l-4.3-4.29a1 1 0 0 1 1.41-1.42L11 13.17V4a1 1 0 0 1 1-1zm-7 14a1 1 0 0 1 1 1v2h12v-2a1 1 0 1 1 2 0v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1z"/>
+                  </svg>
+                </span>
+                <span class="sr-only">Download chart</span>
+                <span class="download-format">(PNG)</span>
+              </button>
+            </div>
           </div>
         </section>
 
@@ -192,26 +205,37 @@
               <option value="conductor">Conductor</option>
               <option value="music_editor">Music editor</option>
               <option value="music_prep">Music prep</option>
+              <option value="engineer">Engineer</option>
             </select>
           </div>
           <p class="sr-only" id="roles-summary">Line chart showing yearly share of women composers and People of Color (PoC) by music department role.</p>
           <div class="chart"><canvas id="chart-roles" aria-describedby="roles-summary"></canvas></div>
-          <details class="chart-data">
-            <summary>View data table</summary>
-            <table class="data-table" aria-describedby="roles-summary">
-              <caption class="sr-only" id="roles-table-caption">Role share data by year.</caption>
-              <thead>
-                <tr>
-                  <th scope="col">Year</th>
-                  <th scope="col">Women composers</th>
-                  <th scope="col">People of Color (PoC)</th>
-                </tr>
-              </thead>
-              <tbody id="table-roles"></tbody>
-            </table>
-          </details>
-          <div class="share-bar" data-share-chart="roles" data-share-anchor="roles" data-share-filename="roles-share.png">
-            <button class="button button--ghost button--small" type="button" data-share-action="download">Download chart (PNG)</button>
+          <div class="chart-actions">
+            <details class="chart-data">
+              <summary>View data</summary>
+              <table class="data-table" aria-describedby="roles-summary">
+                <caption class="sr-only" id="roles-table-caption">Role share data by year.</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Year</th>
+                    <th scope="col">Women composers</th>
+                    <th scope="col">People of Color (PoC)</th>
+                  </tr>
+                </thead>
+                <tbody id="table-roles"></tbody>
+              </table>
+            </details>
+            <div class="share-bar" data-share-chart="roles" data-share-anchor="roles" data-share-filename="roles-share.png">
+              <button class="button button--ghost button--small" type="button" data-share-action="download">
+                <span class="download-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M12 3a1 1 0 0 1 1 1v9.17l2.59-2.58a1 1 0 1 1 1.41 1.42l-4.3 4.29a1 1 0 0 1-1.4 0l-4.3-4.29a1 1 0 0 1 1.41-1.42L11 13.17V4a1 1 0 0 1 1-1zm-7 14a1 1 0 0 1 1 1v2h12v-2a1 1 0 1 1 2 0v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1z"/>
+                  </svg>
+                </span>
+                <span class="sr-only">Download chart</span>
+                <span class="download-format">(PNG)</span>
+              </button>
+            </div>
           </div>
         </section>
 
@@ -231,22 +255,32 @@
           </div>
           <p class="sr-only" id="awards-summary">Line chart showing yearly award share for women composers and composers of color.</p>
           <div class="chart"><canvas id="chart-awards" aria-describedby="awards-summary"></canvas></div>
-          <details class="chart-data">
-            <summary>View data table</summary>
-            <table class="data-table" aria-describedby="awards-summary">
-              <caption class="sr-only" id="awards-table-caption">Awards share data by year.</caption>
-              <thead>
-                <tr>
-                  <th scope="col">Year</th>
-                  <th scope="col">Women composers</th>
-                  <th scope="col">Composers of color</th>
-                </tr>
-              </thead>
-              <tbody id="table-awards"></tbody>
-            </table>
-          </details>
-          <div class="share-bar" data-share-chart="awards" data-share-anchor="awards" data-share-filename="awards-share.png">
-            <button class="button button--ghost button--small" type="button" data-share-action="download">Download chart (PNG)</button>
+          <div class="chart-actions">
+            <details class="chart-data">
+              <summary>View data</summary>
+              <table class="data-table" aria-describedby="awards-summary">
+                <caption class="sr-only" id="awards-table-caption">Awards share data by year.</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Year</th>
+                    <th scope="col">Women composers</th>
+                    <th scope="col">Composers of color</th>
+                  </tr>
+                </thead>
+                <tbody id="table-awards"></tbody>
+              </table>
+            </details>
+            <div class="share-bar" data-share-chart="awards" data-share-anchor="awards" data-share-filename="awards-share.png">
+              <button class="button button--ghost button--small" type="button" data-share-action="download">
+                <span class="download-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M12 3a1 1 0 0 1 1 1v9.17l2.59-2.58a1 1 0 1 1 1.41 1.42l-4.3 4.29a1 1 0 0 1-1.4 0l-4.3-4.29a1 1 0 0 1 1.41-1.42L11 13.17V4a1 1 0 0 1 1-1zm-7 14a1 1 0 0 1 1 1v2h12v-2a1 1 0 1 1 2 0v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1z"/>
+                  </svg>
+                </span>
+                <span class="sr-only">Download chart</span>
+                <span class="download-format">(PNG)</span>
+              </button>
+            </div>
           </div>
         </section>
 
@@ -286,7 +320,7 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" integrity="sha384-9nhczxUqK87bcKHh20fSQcTGD4qq5GhayNYSYWqwBkINBhOfQLg/P5HG5lF1urn4" crossorigin="anonymous"></script>
   <script src="main.js"></script>
 </body>
 </html>

@@ -311,20 +311,6 @@ function initMobileNav() {
   });
 }
 
-function wireDownload(chartKey, chartInstance, filename) {
-  const btn = document.querySelector(`[data-chart="${chartKey}"]`);
-  if (!btn) return;
-  btn.addEventListener('click', () => {
-    const exportCanvas = buildChartExportCanvas(chartInstance, '', []);
-    if (!exportCanvas) return;
-    const link = document.createElement('a');
-    link.href = exportCanvas.toDataURL('image/png', 1);
-    link.download = filename;
-    link.click();
-    showToast('Download started');
-  });
-}
-
 function initChartSharing(chartMap) {
   const bars = document.querySelectorAll('[data-share-chart]');
   bars.forEach((bar) => {
@@ -384,7 +370,6 @@ async function loadData() {
     pocShare,
     womenBudget,
     pocBudget,
-    womenTop,
     awardsShare,
     rolesShare,
   ] = await Promise.all([
@@ -392,7 +377,6 @@ async function loadData() {
     loadJSON('data/poc_share.json'),
     loadJSON('data/female_budget_share.json'),
     loadJSON('data/poc_budget_share.json'),
-    loadJSON('data/female_top_share.json'),
     loadJSON('data/awards_share.json'),
     loadJSON('data/roles_share.json'),
   ]);
@@ -404,7 +388,6 @@ async function loadData() {
     pocShare: sortByYear(pocShare),
     womenBudget: sortByYear(womenBudget),
     pocBudget: sortByYear(pocBudget),
-    womenTop: sortByYear(womenTop),
     awardsShare: Object.fromEntries(
       Object.entries(awardsShare).map(([key, rows]) => [key, sortByYear(rows)])
     ),
@@ -690,34 +673,25 @@ async function initCharts() {
         },
         {
           label: 'Under $10M',
-          borderColor: palette.women.light,
+          borderColor: '#646B73',
           metaKey: 'under_10m',
           hidden: true,
           data: [],
         },
         {
           label: '$10M - $50M',
-          borderColor: palette.women.mid,
+          borderColor: '#2F6F73',
           metaKey: 'between_10m_50m',
           hidden: true,
           data: [],
         },
         {
           label: 'Over $50M',
-          borderColor: palette.women.dark,
+          borderColor: '#9BA2A9',
           metaKey: 'over_50m',
           hidden: false,
           data: [],
         },
-      ])
-    : null;
-
-  const topCanvas = document.getElementById('chart-top');
-  const chartTop = topCanvas
-    ? buildLineChart(topCanvas, [], [
-        { label: 'Top 300', data: [], borderColor: palette.women.primary, metaKey: 'top_300', hidden: false },
-        { label: 'Top 100', data: [], borderColor: palette.women.mid, metaKey: 'top_100', hidden: true },
-        { label: 'Top 30', data: [], borderColor: palette.women.dark, metaKey: 'top_30', hidden: true },
       ])
     : null;
 
@@ -746,25 +720,9 @@ async function initCharts() {
       ])
     : null;
 
-  [chartOverall, chartBudget, chartTop, chartAwards, chartRoles, chartHomeRoles]
+  [chartOverall, chartBudget, chartAwards, chartRoles, chartHomeRoles]
     .filter(Boolean)
     .forEach((chart) => chartInstances.push(chart));
-
-  if (chartOverall) {
-    wireDownload('overall', chartOverall, 'overall-representation.png');
-  }
-  if (chartBudget) {
-    wireDownload('budget', chartBudget, 'budget-by-metric.png');
-  }
-  if (chartTop) {
-    wireDownload('top', chartTop, 'women-top-box-office.png');
-  }
-  if (chartAwards) {
-    wireDownload('awards', chartAwards, 'awards-share.png');
-  }
-  if (chartRoles) {
-    wireDownload('roles', chartRoles, 'roles-share.png');
-  }
 
   const shareMap = {
     overall: chartOverall,
@@ -777,9 +735,6 @@ async function initCharts() {
 
   if (chartBudget) {
     wireSeriesToggles(chartBudget, 'budget');
-  }
-  if (chartTop) {
-    wireSeriesToggles(chartTop, 'top');
   }
 
   const overallYears = allData.womenShare.map((d) => d.year);
@@ -848,13 +803,13 @@ async function initCharts() {
     const theme = getThemeTokens();
     const colors =
       metric === 'poc'
-        ? { all: palette.poc.primary, under: '#47b5ff', between: '#f5b300', over: '#00b36b' }
-        : { all: palette.women.primary, under: '#6bbcff', between: '#6a00ff', over: '#ff6ad5' };
+        ? { all: palette.poc.primary, under: '#646B73', between: '#2F6F73', over: '#9BA2A9' }
+        : { all: palette.women.primary, under: '#646B73', between: '#2F6F73', over: '#9BA2A9' };
     chartBudget.data.datasets.forEach((dataset) => {
       if (dataset.metaKey === 'all_films') dataset.borderDash = [];
-      if (dataset.metaKey === 'under_10m') dataset.borderDash = [4, 3];
-      if (dataset.metaKey === 'between_10m_50m') dataset.borderDash = [8, 3, 2, 3];
-      if (dataset.metaKey === 'over_50m') dataset.borderDash = [2, 2];
+      if (dataset.metaKey === 'under_10m') dataset.borderDash = [];
+      if (dataset.metaKey === 'between_10m_50m') dataset.borderDash = [];
+      if (dataset.metaKey === 'over_50m') dataset.borderDash = [];
       if (dataset.metaKey === 'all_films') dataset.borderColor = colors.all;
       if (dataset.metaKey === 'under_10m') dataset.borderColor = colors.under;
       if (dataset.metaKey === 'between_10m_50m') dataset.borderColor = colors.between;
@@ -883,8 +838,8 @@ async function initCharts() {
       formatTableValue(row.over_50m),
     ]);
     fillTable('table-budget', rows);
-    setTableCaption('budget-table-caption', `${label} share by budget bracket and year.`);
-    setSummaryText('budget-summary', `Line chart showing yearly ${label.toLowerCase()} share by production budget bracket.`);
+    setTableCaption('budget-table-caption', `${label} share by budget and year.`);
+    setSummaryText('budget-summary', `Line chart showing yearly ${label.toLowerCase()} share by production budget.`);
   };
 
   updateBudgetChart('women');
@@ -896,18 +851,6 @@ async function initCharts() {
       updateBudgetChart(budgetSelect.value);
       updateBudgetTable(budgetSelect.value);
     });
-  }
-
-  if (chartTop) {
-    updateChartData(
-      chartTop,
-      allData.womenTop.map((d) => d.year),
-      {
-        top_300: allData.womenTop.map((d) => d.top_300),
-        top_100: allData.womenTop.map((d) => d.top_100),
-        top_30: allData.womenTop.map((d) => d.top_30),
-      }
-    );
   }
 
   const updateAwardsChart = (key) => {
@@ -1226,16 +1169,16 @@ const awardsTimelineData = [
 ];
 
 function buildDotMatrixSVG() {
-  const cols = 16;
-  const rows = 6;
-  const iconWidth = 3;
-  const iconHeight = 3;
-  const gap = 0.5;
+  const cols = 20;
+  const rows = 5;
+  const iconWidth = 2.5;
+  const iconHeight = 2.5;
+  const gap = 0.25;
   const width = cols * iconWidth + (cols - 1) * gap;
   const height = rows * iconHeight + (rows - 1) * gap;
   const dots = [];
   const totalDots = cols * rows;
-  const accentCount = 6;
+  const accentCount = 4;
   const indices = Array.from({ length: totalDots }, (_, i) => i);
   let seed = 4173;
   const rand = () => {
@@ -1260,9 +1203,9 @@ function buildDotMatrixSVG() {
     }
   }
   return `
-    <svg role="img" aria-label="Dot matrix showing about six of ninety-six credits" viewBox="0 0 ${width} ${height}">
+    <svg role="img" aria-label="Dot matrix showing about four of one hundred credits" viewBox="0 0 ${width} ${height}">
       <title>Women composer share, 2000-2025</title>
-      <desc>Six highlighted icons out of ninety-six show the approximate share of women composers.</desc>
+      <desc>Four highlighted icons out of one hundred show the approximate share of women composers.</desc>
       <defs>
         <symbol id="icon-film-camera-filled" viewBox="-41 -41 2129 2111">
           <g fill="currentColor" stroke="none">
@@ -1701,7 +1644,11 @@ function init() {
   initCitation();
   initCharts().catch((err) => {
     console.error(err);
-    alert('Failed to load data. Check the console for details.');
+    const errorBlock = document.getElementById('data-error');
+    if (errorBlock) {
+      errorBlock.hidden = false;
+    }
+    showToast('Data temporarily unavailable');
   });
 }
 

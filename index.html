@@ -39,12 +39,7 @@
     <section class="hero hero--home">
       <div class="hero__text">
         <h1>Composer Representation Report</h1>
-        <p class="subtitle">A data-driven analysis of representation in the U.S. film music industry (2000-2025).</p>
-        <div class="cta-row cta-row--nowrap">
-          <!-- <a class="button" href="../report/archive/composer_representation_report.pdf" data-pdf-link download>Full Report (PDF)</a>
-          <a class="button button--ghost" href="facts.html">The Facts</a>
-          <a class="button button--ghost" href="about.html">About</a> -->
-        </div>
+        <p class="subtitle">A data-driven analysis of representation in the U.S. film music industry over a quarter century.</p>
         <a class="hero__scroll-hint" href="#facts-carousel" data-scroll-target="facts-carousel" aria-label="Jump to key facts">
           <span>Key facts</span>
           <span class="hero__arrow" aria-hidden="true">⌄</span>
@@ -59,7 +54,7 @@
             <article class="carousel__slide is-active" id="fact-1" data-carousel-slide aria-roledescription="slide" aria-label="1 of 5" role="tabpanel" aria-labelledby="tab-fact-1" aria-hidden="false" tabindex="-1">
               <div class="carousel__fact-block">
                 <div class="fact-headline">
-                  <p class="carousel__fact-text">For nearly two decades, only 4% of top-grossing films were scored by women.</p>
+                  <p class="carousel__fact-text">For nearly 20 years, only <span style="color: var(--poc-accent);">4%</span> of top-grossing films were scored <span class="legend-accent">by women</span>.</p>
                 </div>
                 <div class="fact-viz fact-viz--dots" data-fact-viz="dots">
                   <div class="fact-callout fact-callout--overlay">4%</div>
@@ -85,7 +80,7 @@
             </article>
             <article class="carousel__slide" id="fact-2" data-carousel-slide aria-roledescription="slide" aria-label="2 of 5" role="tabpanel" aria-labelledby="tab-fact-2" aria-hidden="true" tabindex="-1">
               <div class="carousel__fact-block">
-                <p class="carousel__fact-text">For three-quarters of history, no woman composer nominated at the Oscars, Grammys, or Golden Globes.</p>
+                <p class="carousel__fact-text">For 3/4 of history, <span class="legend-accent">no woman composer</span> nominated for any <span style="color: var(--poc-accent);">Oscar, Grammy, or Golden Globe</span>.</p>
                 <div class="fact-viz fact-viz--timeline" data-fact-viz="timeline"></div>
                 <div class="fact-legend">
                   <span><span class="legend-dot legend-dot--full" aria-hidden="true"></span> ≥1 woman nominee</span>
@@ -103,7 +98,7 @@
             </article>
             <article class="carousel__slide" id="fact-4" data-carousel-slide aria-roledescription="slide" aria-label="4 of 5" role="tabpanel" aria-labelledby="tab-fact-4" aria-hidden="true" tabindex="-1">
               <div class="carousel__fact-block carousel__fact-block--text-heavy">
-                <p class="carousel__fact-text"><span class="legend-accent">Women composers</span> and <span style="color: var(--poc-accent);">composers of color</span> must wait significantly longer to receive their first Oscar nomination.</p>
+                <p class="carousel__fact-text"><span class="legend-accent">Women</span> and <span style="color: var(--poc-accent);">PoC composers</span> must wait significantly longer to receive their first Oscar nomination.</p>
                 <div class="fact-viz fact-viz--experience" data-fact-viz="experience"></div>
                 <p class="carousel__caption">Average Time to First Oscar Nomination from First Credit</p>
               </div>
@@ -111,7 +106,7 @@
             <article class="carousel__slide" id="fact-5" data-carousel-slide aria-roledescription="slide" aria-label="5 of 5" role="tabpanel" aria-labelledby="tab-fact-5" aria-hidden="true" tabindex="-1">
               <div class="carousel__fact-block carousel__fact-block--text-heavy carousel__fact-block--mega">
                 <p class="carousel__fact-text">
-                  ONE COMPOSERS HAS MORE OSCAR NOMINATIONS THAN ALL <span class="legend-accent">WOMEN COMPOSERS</span> AND ALL <span style="color: var(--poc-accent);">COMPOSERS OF COLOR</span> COMBINED.
+                  A SINGLE COMPOSERS HAS MORE OSCAR NOMINATIONS THAN ALL <span class="legend-accent">WOMEN COMPOSERS</span> AND ALL <span style="color: var(--poc-accent);">COMPOSERS OF COLOR</span> COMBINED.
                 </p>
               </div>
             </article>
@@ -146,7 +141,10 @@
     <section id="home-roles" class="panel panel--interactive">
       <div class="panel__header">
         <h2>Representation across composers and music department roles</h2>
-        <p>Switch roles to compare how representation shifts across key credits.</p>
+        <p>Switch roles to compare how representation shifts across the music department.</p>
+      </div>
+      <div id="data-error" class="data-error" hidden>
+        <p>Data temporarily unavailable. Please try again or download the PDF report.</p>
       </div>
       <div class="chart-controls">
         <span class="control-label">Role:</span>
@@ -157,26 +155,37 @@
           <option value="conductor">Conductor</option>
           <option value="music_editor">Music editor</option>
           <option value="music_prep">Music prep</option>
+          <option value="engineer">Engineer</option>
         </select>
       </div>
       <p class="sr-only" id="home-roles-summary">Line chart showing yearly share of women composers and People of Color (PoC) across selected music department roles.</p>
       <div class="chart"><canvas id="chart-home-roles" aria-describedby="home-roles-summary"></canvas></div>
-      <details class="chart-data">
-        <summary>View data table</summary>
-        <table class="data-table" aria-describedby="home-roles-summary">
-          <caption class="sr-only" id="home-roles-table-caption">Representation by role and year.</caption>
-          <thead>
-            <tr>
-              <th scope="col">Year</th>
-              <th scope="col">Women composers</th>
-              <th scope="col">People of Color (PoC)</th>
-            </tr>
-          </thead>
-          <tbody id="table-home-roles"></tbody>
-        </table>
-      </details>
-      <div class="share-bar" data-share-chart="home-roles" data-share-anchor="home-roles" data-share-filename="roles-home.png">
-        <button class="button button--ghost button--small" type="button" data-share-action="download">Download chart (PNG)</button>
+      <div class="chart-actions">
+        <details class="chart-data">
+          <summary>View data</summary>
+          <table class="data-table" aria-describedby="home-roles-summary">
+            <caption class="sr-only" id="home-roles-table-caption">Representation by role and year.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Year</th>
+                <th scope="col">Women composers</th>
+                <th scope="col">People of Color (PoC)</th>
+              </tr>
+            </thead>
+            <tbody id="table-home-roles"></tbody>
+          </table>
+        </details>
+        <div class="share-bar" data-share-chart="home-roles" data-share-anchor="home-roles" data-share-filename="roles-home.png">
+          <button class="button button--ghost button--small" type="button" data-share-action="download">
+            <span class="download-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 3a1 1 0 0 1 1 1v9.17l2.59-2.58a1 1 0 1 1 1.41 1.42l-4.3 4.29a1 1 0 0 1-1.4 0l-4.3-4.29a1 1 0 0 1 1.41-1.42L11 13.17V4a1 1 0 0 1 1-1zm-7 14a1 1 0 0 1 1 1v2h12v-2a1 1 0 1 1 2 0v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1z"/>
+              </svg>
+            </span>
+            <span class="sr-only">Download chart</span>
+            <span class="download-format">(PNG)</span>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -198,9 +207,9 @@
             <h3>Data at a glance</h3>
             <ul>
               <li>🎬 7,800 films (Top 300 per year, 2000-2025)</li>
-              <li>👤 6,000+ professionals</li>
-              <li>🎼 Roles: composers, orchestrators, conductors, music editors, music preparators, orchestration teams</li>
-              <li>🏆 Awards: Academy Awards, Golden Globes, Grammys</li>
+              <li>👤 8,000+ professionals</li>
+              <li>🎼 Roles: composers, conductors, engineers, music editors, music preparators, orchestrators, orchestration teams</li>
+              <li>🏆 Awards: Academy Awards, Golden Globe Awards, Grammy Awards</li>
               <li>📊 Sources: IMDb, publicly available information</li>
             </ul>
           </div>
@@ -228,31 +237,6 @@
       </div>
     </section>
 
-    <section class="cta-panel">
-      <div class="container cta-panel__inner">
-        <div class="cta-panel__content">
-          <div>
-            <p class="eyebrow">The Facts</p>
-            <h2>Each of these findings is supported by decades of data.</h2>
-            <p class="subtitle">Explore the evidence and the patterns visible in the data.</p>
-          </div>
-          <div class="two-col facts-prompts">
-            <div class="panel__callout">
-              <p>Who gets hired — and who doesn't?</p>
-            </div>
-            <div class="panel__callout">
-              <p>How budgets affect access</p>
-            </div>
-            <div class="panel__callout">
-              <p>Who receives recognition</p>
-            </div>
-          </div>
-          <div class="cta-row cta-panel__action">
-            <a class="button" href="facts.html" data-nav-link="facts">Explore the Data</a>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="footer">
@@ -263,7 +247,7 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" integrity="sha384-9nhczxUqK87bcKHh20fSQcTGD4qq5GhayNYSYWqwBkINBhOfQLg/P5HG5lF1urn4" crossorigin="anonymous"></script>
   <script src="main.js"></script>
 </body>
 </html>
