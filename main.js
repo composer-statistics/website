@@ -1,5 +1,5 @@
 const THEME_KEY = 'cdr-theme';
-const PDF_PATH = '../report/archive/composer_representation_report.pdf';
+const PDF_PATH = 'assets/composer_representation_report.pdf';
 
 const GRAPH_CREDIT_TEXT = '';
 
@@ -182,6 +182,8 @@ function initLinks() {
   const pdfLinks = document.querySelectorAll('[data-pdf-link]');
   pdfLinks.forEach((link) => {
     link.setAttribute('href', new URL(PDF_PATH, window.location.href).toString());
+    link.setAttribute('target', '_blank');
+    link.setAttribute('rel', 'noopener');
   });
 
   const navLinks = document.querySelectorAll('[data-nav-link]');
